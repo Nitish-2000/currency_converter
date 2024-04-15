@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CurrencyConverterMaterialPage extends StatelessWidget{
@@ -15,22 +14,22 @@ class CurrencyConverterMaterialPage extends StatelessWidget{
                   ),
                   borderRadius: BorderRadius.all(Radius.circular(50))
                 );
-    return const Scaffold(
-      backgroundColor: Color.fromARGB(255, 201, 218, 203),
+    return  Scaffold(
+      backgroundColor:const Color.fromARGB(255, 201, 218, 203),
       body : Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("0",
+            const Text("0",
             style: TextStyle(
               fontSize: 50,
               fontFamily:AutofillHints.creditCardExpirationDay,
               fontWeight: FontWeight.w900,
               color: Colors.blue
             ),),
-            Padding(
-              padding: EdgeInsets.all(10.0);
-              child: TextField(
+             Container(
+              padding: const EdgeInsets.all(10.0),
+              child:const TextField(
                 
                 style: TextStyle(
                   color: Color.fromARGB(255, 38, 39, 35),
