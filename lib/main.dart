@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'currency_converter_material_page.dart';
 
 void main() {
-  runApp(const MyApp);
+  runApp(const MyApp());
 }
 
 //Types of widgets:
