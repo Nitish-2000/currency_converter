@@ -1,41 +1,43 @@
-import 'dart:ui';
+// import 'dart:html';
+// import 'dart:ui';
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
+// import 'package:flutter/cupertino.dart';
+// import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+// import 'package:flutter/painting.dart';
+// import 'package:flutter/rendering.dart';
+// import 'package:flutter/widgets.dart';
 
 
 ///To create an variable that collects and stores an users value
 ///To create an function that can multiple the value with conversion value and produce an result and displaying in the area
 
-class CurrencyConverterMaterialPageStateful extends StatefulWidget{
-  State createState()=> _CurrencyStatePage();
-}
+class  CurrencyConverterMaterialPageStateful extends StatefulWidget{
+  const   CurrencyConverterMaterialPageStateful({super.key});
 
-class _CurrencyStatePage extends State{
-   @override
-   Widget build(BuildContext context) {
-    return const Scaffold();
-   }
-
-}
-
-  class CurrencyConverterMaterialPage extends StatelessWidget {
-  const CurrencyConverterMaterialPage({super.key});
-
-  @override
   
-  Widget build(BuildContext context) {
-          final TextEditingController textEdited = TextEditingController();
-          double result = 0;
+  @override
+  State<CurrencyConverterMaterialPageStateful> createState() =>
+    // debugPrint("create state");
+    _CurrencyStatePage();
+    // return  _CurrencyStatePage();
+
+  }
+
+
+class _CurrencyStatePage extends State<CurrencyConverterMaterialPageStateful>{
+  double result = 0;
+   final TextEditingController textEdited = TextEditingController();
+   @override
+    Widget build(BuildContext context) {
+      debugPrint('Main Widget');
+         
+          
 
     const border = OutlineInputBorder(
         borderSide: BorderSide(
           color: Color.fromARGB(255, 20, 19, 19),
-          width: 2,
+          width: 2.0,
           style: BorderStyle.solid,
           strokeAlign: BorderSide.strokeAlignCenter,
         ),
@@ -52,22 +54,35 @@ class _CurrencyStatePage extends State{
                   fontSize: 30, fontWeight: FontWeight.w700, letterSpacing: 2),
             ),
           ),
-          actions:const  [
-              Icon(Icons.logout)
+          actions:  [
+              IconButton (
+                onPressed: (){
+                       debugPrint('hi');
+                       setState(() {
+                         result==0;
+                       });
+              },
+               icon: const  Icon(Icons.clear))
+              
+              
           ],
         ),
         body: Center(
           child: Column(
+            
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              const  Text(
+                'Hello',
+               ),
                Text(
-                 result.toString(),
+                 'INR ${result} /-',
                 
                 //convertingfom string to int => int.parse(Stringvalue)
                 // Converting from int to string => intvalue.toString
               
                 style: const TextStyle(
-                    fontSize: 50,
+                    fontSize: 30,
                     fontFamily: AutofillHints.creditCardExpirationDay,
                     fontWeight: FontWeight.w900,
                     color: Colors.blue),
@@ -86,7 +101,9 @@ class _CurrencyStatePage extends State{
                     filled: true,
                     fillColor: Color.fromARGB(255, 240, 237, 237),
                     hintText: "Please Enter amount",
-                    prefixIcon: Icon(Icons.currency_rupee),
+                    contentPadding: EdgeInsetsDirectional.all(30),
+                    prefixText: '\$',
+                    suffixText: '/-',
                     prefixIconColor: Color.fromARGB(255, 19, 5, 4),
                     focusedBorder: border, // We called an variable
                     enabledBorder: border,
@@ -95,8 +112,13 @@ class _CurrencyStatePage extends State{
                 ),
               ),
               ElevatedButton( //
-                onPressed:()=>{
-                   result = double.parse(textEdited.text)*81}, ///Calling TextFieldController function to update with new value
+                onPressed:(){
+                  
+                 setState(() { 
+                //  debugPrint(textEdited.text.length);
+                   result = double.parse(textEdited.text)*81;
+                 });
+                   }, ///Calling TextFieldController function to update with new value
                     
                 style: TextButton.styleFrom(
                   padding: const EdgeInsetsDirectional.all(25),
@@ -123,5 +145,5 @@ class _CurrencyStatePage extends State{
         ));
   }
   
-  
+
 }
